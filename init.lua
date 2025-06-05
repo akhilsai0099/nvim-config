@@ -6,6 +6,8 @@ vim.diagnostic.config({
   virtual_text = true,  -- enables inline diagnostics
 })
 
+vim.opt.relativenumber = true
+vim.opt.number = true
 vim.cmd('filetype plugin on')
 vim.o.omnifunc = 'syntaxcomplete#Complete'
 
