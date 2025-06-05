@@ -45,7 +45,14 @@ set.scrolloff = 8
 -- undo dir settings
 set.swapfile = false
 set.backup = false
-set.undodir = os.getenv("HOME") .. "/.vim/undodir"
+-- Cross-platform home directory detection
+local home = os.getenv("USERPROFILE") or os.getenv("HOME")
+if home then
+    set.undodir = home .. "/.vim/undodir"
+else
+    -- Fallback if neither environment variable exists
+    set.undodir = vim.fn.stdpath("data") .. "/undodir"
+end
 set.undofile = true
 
 -- incremental search

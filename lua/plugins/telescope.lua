@@ -1,5 +1,7 @@
 return {
     'nvim-telescope/telescope.nvim',
+    branch = 'master',
+    tag = '0.1.6', -- Use a stable version tag
     dependencies = {
         'nvim-lua/plenary.nvim',
     },
@@ -15,11 +17,9 @@ return {
                     }
                 }
             }
-        })
-
-        local builtin = require('telescope.builtin')
+        })        local builtin = require('telescope.builtin')
         vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-        vim.keymap.set('n', '<leader>fg', builtin.git_files, {})
+        vim.keymap.set('n', '<leader>fgf', builtin.git_files, {})
         vim.keymap.set('n', '<leader>fo', builtin.oldfiles, {})
         vim.keymap.set('n', '<leader>fq', builtin.quickfix, {})
         vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
@@ -39,11 +39,9 @@ return {
         -- Grep current string (for when gd doesn't work)
         vim.keymap.set('n', '<leader>fs', function()
             builtin.grep_string({})
-        end, { desc = "Find current string: " })
-
-        -- find files in vim config
+        end, { desc = "Find current string: " })        -- find files in vim config
         vim.keymap.set('n', '<leader>fi', function()
-            builtin.find_files({ cwd = "~/.config/nvim/" });
+            builtin.find_files({ cwd = vim.fn.stdpath("config") });
         end)
     end
 }
