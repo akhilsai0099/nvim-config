@@ -17,25 +17,31 @@ return {
     },
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "ts_ls" },
+        ensure_installed = { "lua_ls", "ts_ls", "eslint" },
       })
     end,
   },
   {
     "neovim/nvim-lspconfig",
     config = function()
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
       vim.lsp.config("lua_ls", {
         settings = {
           ["lua_ls"] = {},
         },
-        capabilities=capabilities
+        capabilities = capabilities,
       })
       vim.lsp.config("ts_ls", {
         settings = {
           ["ts_ls"] = {},
         },
-        capabilities= capabilities
+        capabilities = capabilities,
+      })
+      vim.lsp.config("eslint-lsp", {
+        settings = {
+          ["eslint-lsp"] = {},
+        },
+        capabilities = capabilities,
       })
       vim.keymap.set({ "n" }, "<leader>ca", vim.lsp.buf.code_action, {})
     end,
