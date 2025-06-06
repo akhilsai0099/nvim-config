@@ -13,7 +13,13 @@ return {
         --require("none-ls.diagnostics.eslint"),
       },
     })
-
+    -- Format on save
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      pattern = "*",
+      callback = function()
+        vim.lsp.buf.format({ async = false })
+      end,
+    })
     vim.keymap.set("n", "<leader>gff", vim.lsp.buf.format, {})
   end,
 }
