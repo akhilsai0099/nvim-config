@@ -17,7 +17,7 @@ return {
         },
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "ts_ls", "eslint" },
+                ensure_installed = { "lua_ls", "ts_ls", "eslint", "pylsp" },
             })
         end,
     },
@@ -46,6 +46,12 @@ return {
             vim.lsp.config("gh_actions_ls", {
                 settings = {
                     ["gh_actions_ls"] = {},
+                },
+                capabilities = capabilities,
+            })
+            vim.lsp.config("pylsp", {
+                settings = {
+                    ["pylsp"] = {},
                 },
                 capabilities = capabilities,
             })
