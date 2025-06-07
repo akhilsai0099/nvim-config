@@ -12,6 +12,9 @@ return {
         indent = {
             enable = true,
         },
+        fold = {
+            enable = true,
+        },
     },
     config = function(_, opts)
         require("nvim-treesitter.configs").setup(opts)
